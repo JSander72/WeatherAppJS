@@ -8,9 +8,13 @@ window.onload = function () {
 
   async function checkWeather(city) {
     const response = await fetch(apiUrl + 'APPID=' + apiKey + '&units=imperial&q=' + city );
-    const data = await response.json();
 
-    console.log(data);
+    if(response.status == 404){
+      document.querySelector('.error').style.display = 'block';
+      document.querySelector('.weather').style.display = 'none';
+    }else{
+      var data = await response.json();
+
 
     document.querySelector('.city').innerHTML = data.name;
     document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + '°F';
@@ -36,10 +40,15 @@ window.onload = function () {
       weatherIcon.src = 'images/snow.png';
     }
 
+    document.querySelector('.weather').style.display = 'block';
+    document.querySelector('.error').style.display = 'none';
+
+    }
 
 
-  }
-// not able to get search img to update city with api to refresh app - solved - button "type" added to html
+
+ }
+
   searchBtn.addEventListener('click', () => {
     checkWeather(searchBox.value);
   });
