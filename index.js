@@ -1,12 +1,12 @@
 window.onload = function () {
-  const apiKey = "44a0e5165b265ba57bfd8e1d4165b730b";
+  const apiKey = "4a0e5165b265ba57bfd8e1d4165b730b";
   const apiUrl = "http://api.openweathermap.org/data/2.5/weather?";
 
   const searchBox = document.querySelector('.search input');
   const searchBtn = document.querySelector('.search button');
 
   async function checkWeather(city) {
-    const response = await fetch(apiUrl + 'appid=' + apiKey + '&units=imperial' + '&q=' + city);
+    const response = await fetch(apiUrl + 'APPID=' + apiKey + '&units=imperial&q=' + city);
     var data = await response.json();
 
     console.log(data);
@@ -16,7 +16,7 @@ window.onload = function () {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + ' mi/hr';
   }
-// not able to get search img to update city with api to refresh app - solve 
+// not able to get search img to update city with api to refresh app - solved - button "type" added to html
   searchBtn.addEventListener('click', () => {
     checkWeather(searchBox.value);
   });
