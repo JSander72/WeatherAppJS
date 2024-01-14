@@ -1,6 +1,10 @@
+const { requireOrImport } = require("mocha/lib/nodejs/esm-utils");
+
 window.onload = function () {
-  const apiKey = "4a0e5165b265ba57bfd8e1d4165b730b";
-  const apiUrl = "http://api.openweathermap.org/data/2.5/weather?";
+  require("dotenv").config();
+
+  const apiKey = process.env.WEATHER_API_KEY;
+  const apiUrl = process.env.WEATHER_API_URL;
 
   const searchBox = document.querySelector('.search input');
   const searchBtn = document.querySelector('.search button');
