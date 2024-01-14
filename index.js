@@ -1,12 +1,15 @@
-const { requireOrImport } = require("mocha/lib/nodejs/esm-utils");
+// const { requireOrImport } = require("mocha/lib/nodejs/esm-utils");
+
+import { congif } from "dotenv";
+congif();
 
 window.onload = function () {
-  require(".env").config();
+  require("dotenv").config();
 
   console.log(process.env);
 
-  const apiKey = process.env.WEATHER_API_KEY;
-  const apiUrl = process.env.WEATHER_API_URL;
+  const apiKey = process.env.API_KEY;
+  const apiUrl = "http://api.openweathermap.org/data/2.5/weather?";
 
   const searchBox = document.querySelector('.search input');
   const searchBtn = document.querySelector('.search button');
