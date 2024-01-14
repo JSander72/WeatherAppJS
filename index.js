@@ -1,7 +1,9 @@
 const { requireOrImport } = require("mocha/lib/nodejs/esm-utils");
 
 window.onload = function () {
-  require("dotenv").config();
+  require(".env").config();
+
+  console.log(process.env);
 
   const apiKey = process.env.WEATHER_API_KEY;
   const apiUrl = process.env.WEATHER_API_URL;
